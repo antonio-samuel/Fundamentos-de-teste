@@ -1,0 +1,26 @@
+Aula 4: Análise e Design de Teste
+Aqui, o foco é a criação de casos de teste eficazes usando diferentes técnicas.
+
+Técnicas de Teste Baseadas em Especificação (Caixa-Preta): Focam no comportamento externo do software.
+
+Particionamento de Equivalência: Divide os dados de entrada em partições válidas e inválidas. Testa-se um representante de cada partição.
+
+Análise de Valor de Limite (BVA): Testa os limites das partições de equivalência (valores mínimos e máximos).
+
+Teste de Tabela de Decisão: Ideal para testar lógicas complexas com múltiplas combinações de condições.
+
+Teste de Transição de Estado: Utilizado para testar sistemas que mudam de estado (ex: uma máquina de estados).
+
+Técnicas de Teste Baseadas na Estrutura (Caixa-Branca): Focam na estrutura interna do código.
+
+Teste de Instrução: Garante que cada linha de código seja executada pelo menos uma vez.
+
+Teste de Ramificação (Branch): Garante que cada decisão (if/else) seja testada em ambos os caminhos.
+
+Técnicas de Teste Baseadas na Experiência: Dependentes do conhecimento do testador.
+
+Suposição de Erro: O testador prevê onde os erros podem estar, baseado em sua experiência.
+
+Teste Exploratório: O teste é aprendido e executado simultaneamente, guiado por uma "carta de teste" (test charter).
+
+Teste Baseado em Checklist: O testador cria testes para cobrir os itens de uma lista de verificação.
