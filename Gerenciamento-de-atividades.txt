@@ -1,0 +1,12 @@
+Aula 5: Gerenciamento de Atividades de Teste
+Esta aula sai do "como testar" para o "como gerenciar" todo o esforço de teste.
+
+Planejamento de Teste: Definição do escopo, abordagem, recursos e cronograma dos testes. O resultado é o Plano de Teste.
+
+Monitoramento e Controle de Teste: Acompanhamento do progresso em relação ao plano. Inclui a comparação de resultados reais com os esperados e a tomada de ações corretivas.
+
+Gerenciamento de Riscos: Identificação, análise e mitigação de riscos que podem impactar a qualidade do software. O teste é uma forma de mitigar riscos de produto.
+
+Gerenciamento de Defeitos: Processo de registrar, classificar, priorizar e acompanhar defeitos encontrados até sua resolução.
+
+Conclusão de Teste: Fase final em que se avalia se os objetivos do teste foram atingidos e se o produto está pronto para ser entregue.
