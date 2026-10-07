@@ -1,0 +1,16 @@
+Aula 3: Teste Estático
+Esta aula foca em técnicas de teste que não envolvem a execução do código, sendo aplicadas a artefatos de software.
+
+O que é Teste Estático? Consiste em examinar artefatos de software (código, requisitos, designs) para encontrar defeitos sem executá-los.
+
+Revisões e Análise Estática:
+
+Revisões: Processo formal ou informal de revisão de artefatos por pessoas.
+
+Revisão Técnica: Focada em verificar a conformidade com as especificações e padrões.
+
+Inspeção: Revisão formal, bem estruturada, com papéis definidos (moderador, autor, inspetor) e foco na detecção de defeitos.
+
+Análise Estática: Uso de ferramentas para examinar o código automaticamente (ex: linters, analisadores de código).
+
+Processo de Revisão: Um processo de revisão típico segue as etapas: planejamento, kick-off, preparação individual, reunião de revisão, correção e acompanhamento.
