@@ -1,0 +1,16 @@
+Aula 6: Ferramentas de Teste
+Esta aula oferece uma visão geral das ferramentas que auxiliam nas atividades de teste.
+
+Classificação de Ferramentas: As ferramentas de teste são classificadas de acordo com a atividade de teste que suportam, como:
+
+Ferramentas de gerenciamento de teste (ex: Jira, TestRail).
+
+Ferramentas de automação de teste (ex: Cypress, Selenium).
+
+Ferramentas de teste de performance (ex: JMeter, LoadRunner).
+
+Ferramentas de teste estático (ex: linters).
+
+Benefícios das Ferramentas: Aumento da consistência e produtividade, redução do trabalho repetitivo e melhoria da comunicação.
+
+Riscos das Ferramentas: Superdependência, custo elevado, esforço de manutenção e a possibilidade de introduzir problemas na automação.
