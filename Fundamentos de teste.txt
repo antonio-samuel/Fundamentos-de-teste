@@ -1,0 +1,65 @@
+Fundamentos de teste
+
+cadeia de eventos par uma falha:
+passo 1 :erro---> passo 2 :defeito ----> passo 3: falha
+(falha humana)     (falha no código)    (comportamento que não deveria acontecer)
+
+(QA)garantia de qualidade       (QC)Controle de qualidade
+ preventivo                       corretiva
+ orientada a processos            orientada a produtos
+  em prevenir defeitos            foco em encontrar defeitos
+ exemplo: melhoria de procesos    exemplo: executar testes
+
+o que é teste?
+
+atividade que busca encotrar falhas e avalia a qualidade do software
+
+objetivos típicos de teste:
+
+avaliar produtos de trabalho;
+detectar falhas e defeitos;
+verificar se os requisitos foram atendidos;
+reduzir o nível de risco da qualidade;
+fornecer informações a stakeholders;
+criar confiança na qualidade do objeto de teste.
+
+OS SETES PRINCIPIOS DOS TESTES:
+
+1 - o teste mostra que há defeitos, mas não mostra que nã há defeitos
+
+2 - testes exaustivos são impossíveis. é impossível testar tudo então é necessário uma analise e testar o que importa;
+
+3 - testes antecipados. Economizam tempo, dinheiro e reputação ao encontrar defeitos no inicio do ciclo;
+
+4 - defeitos se agrupam. a maioria dos problemas geralmente se concentra em poucas áreas;
+
+5 - Paradoxo do pesticida. Testes se degradam, os testes precisam ser sempre renovados, aqueles que são usados constantemente sem revisão ou atualização não acham mais bugs assim como usar o mesmo pesticida por muito tempo não funcionará;
+
+6 - Testes dependem de contexto. não se testa um ecommerce como se testa um software de um avião;
+
+7 - Falácia de ausência de defeitos. um produto sem bugs poder ser inútil se não atender as necessidades do cliente.
+
+O Processo de teste:
+
+planejamento de teste;
+monitoramento e controle de teste;
+analise de teste;
+modelagem de teste;
+implementação de teste;
+execução de teste;
+conclusão de teste.
+
+Testware:
+produtos de trabalho criados durante o processo de teste, como planos, casos de teste e relatórios.
+
+
+habilidades essenciais:
+
+conhecimentos sobre teste;
+meticulosidade;
+habilidades de comunicação;
+pensamento analítico, critico e criativo;
+conhecimento técnico e do domínio.
+
+
+
