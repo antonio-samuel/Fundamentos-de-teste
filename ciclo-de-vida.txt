@@ -1,0 +1,29 @@
+Aula 2: Testes ao Longo do Ciclo de Vida (SDLC)
+Esta aula aborda como os testes se integram aos diferentes modelos de desenvolvimento de software.
+
+Modelos de Desenvolvimento: O teste se adapta ao modelo usado. Os principais são:
+
+Modelo em Cascata (Waterfall): Teste ocorre principalmente no final, após a fase de desenvolvimento.
+
+Modelos Iterativos e Incrementais (ex: Ágil): Teste é contínuo, realizado a cada iteração, com forte colaboração entre as equipes.
+
+Níveis de Teste: O teste é realizado em diferentes granularidades ao longo do desenvolvimento.
+
+Teste de Componente/Unidade: Foca em partes isoladas do código (funções, classes).
+
+Teste de Integração: Verifica a comunicação entre diferentes componentes ou sistemas.
+
+Teste de Sistema: Avalia o sistema como um todo, testando requisitos funcionais e não funcionais.
+
+Teste de Aceitação: Realizado para validar se o sistema atende às necessidades do usuário e está pronto para uso.
+
+Tipos de Teste:
+
+Teste Funcional: Verifica "o que" o sistema faz (funcionalidades).
+
+Teste Não Funcional: Verifica "como" o sistema se comporta (desempenho, usabilidade, segurança).
+
+Teste de Regressão: Garante que novas alterações não quebraram funcionalidades existentes.
+
+Teste de Manutenção: Realizado após alterações ou migrações para garantir a qualidade contínua.
+
