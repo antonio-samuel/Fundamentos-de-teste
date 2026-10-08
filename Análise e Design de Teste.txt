@@ -26,3 +26,5 @@ Teste Exploratório: O teste é aprendido e executado simultaneamente, guiado po
 Teste Baseado em Checklist: O testador cria testes para cobrir os itens de uma lista de verificação.
 
 3Cs da historia : cartão, conversação e confirmação
+
+fluxo de ATDD
