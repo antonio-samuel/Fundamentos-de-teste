@@ -27,3 +27,9 @@ Teste de Regressão: Garante que novas alterações não quebraram funcionalidad
 
 Teste de Manutenção: Realizado após alterações ou migrações para garantir a qualidade contínua.
 
+teste de confirmação: confirma que um defeito original foi corrigido
+
+caixa-preta: comportamento de usuário final. so avaliamos a entrada e saída
+
+caixa branca: avaliamos o código, estrutura, código. Abrimos o capô. 
+
