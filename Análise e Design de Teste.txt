@@ -9,7 +9,7 @@ Análise de Valor de Limite (BVA): Testa os limites das partições de equivalê
 
 Teste de Tabela de Decisão: Ideal para testar lógicas complexas com múltiplas combinações de condições.
 
-Teste de Transição de Estado: Utilizado para testar sistemas que mudam de estado (ex: uma máquina de estados).
+Teste de Transição de Estado: Utilizado para testar sistemas que mudam de estado (ex: enviado, não enviado, aguardando pagamento).
 
 Técnicas de Teste Baseadas na Estrutura (Caixa-Branca): Focam na estrutura interna do código.
 
