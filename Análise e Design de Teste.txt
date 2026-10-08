@@ -24,3 +24,5 @@ Suposição de Erro: O testador prevê onde os erros podem estar, baseado em sua
 Teste Exploratório: O teste é aprendido e executado simultaneamente, guiado por uma "carta de teste" (test charter).
 
 Teste Baseado em Checklist: O testador cria testes para cobrir os itens de uma lista de verificação.
+
+3Cs da historia : cartão, conversação e confirmação
