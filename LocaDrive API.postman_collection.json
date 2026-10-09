@@ -1,0 +1,577 @@
+{
+  "info": {
+    "_postman_id": "7ffc868a-0e90-4729-95af-af988f42688e",
+    "name": "LocaDrive API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "58828981",
+    "_collection_link": "https://go.postman.co/collection/58828981-7ffc868a-0e90-4729-95af-af988f42688e?source=collection_link"
+  },
+  "item": [
+    {
+      "name": "Auth",
+      "item": [
+        {
+          "name": "Login",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test('Status 200', () => pm.response.to.have.status(200));",
+                  "const u = pm.response.json();",
+                  "pm.collectionVariables.set('usuario_id', u.id);",
+                  "pm.test('Retorna objeto usuario', () => pm.expect(u).to.have.property('id'));"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\"email\": \"admin@locadrive.com\", \"senha\": \"admin123\"}"
+            },
+            "url": {
+              "raw": "{{base_url}}/auth/login",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "auth",
+                "login"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Cadastrar Usuário",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test('Status 200 ou 201', () => pm.expect(pm.response.code).to.be.oneOf([200, 201]));"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\"nome\":\"Teste QA\",\"email\":\"qa@locadrive.com\",\"cpf\":\"98765432100\",\"cnh\":\"98765432100\",\"telefone\":\"61999990000\",\"senha\":\"1234\",\"perfil\":\"CLIENTE\"}"
+            },
+            "url": {
+              "raw": "{{base_url}}/usuarios",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "usuarios"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Veículos",
+      "item": [
+        {
+          "name": "Listar todos",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test('Status 200', () => pm.response.to.have.status(200));",
+                  "pm.test('Array de veiculos', () => pm.expect(pm.response.json()).to.be.an('array'));",
+                  "const v = pm.response.json();",
+                  "if (v.length > 0) pm.collectionVariables.set('veiculo_id', v[0].id);"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/veiculos",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "veiculos"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Listar disponíveis",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test('Status 200', () => pm.response.to.have.status(200));",
+                  "const lista = pm.response.json();",
+                  "pm.test('Todos disponíveis', () => lista.forEach(v => pm.expect(v.disponivel).to.be.true));"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/veiculos/disponiveis",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "veiculos",
+                "disponiveis"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Buscar por ID",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test('Status 200', () => pm.response.to.have.status(200));",
+                  "pm.test('Tem campo marca', () => pm.expect(pm.response.json()).to.have.property('marca'));"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/veiculos/{{veiculo_id}}",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "veiculos",
+                "{{veiculo_id}}"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Criar veículo (Admin)",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test('Status 200 ou 201', () => pm.expect(pm.response.code).to.be.oneOf([200,201]));",
+                  "pm.test('Retorna veículo criado', () => pm.expect(pm.response.json()).to.have.property('id'));"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\"marca\":\"Honda\",\"modelo\":\"Civic\",\"placa\":\"QAT1E23\",\"cor\":\"Preto\",\"ano\":2023,\"categoria\":\"Sedan\",\"valorDiaria\":180.00,\"disponivel\":true}"
+            },
+            "url": {
+              "raw": "{{base_url}}/veiculos",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "veiculos"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Atualizar veículo (Admin)",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test('Status 200', () => pm.response.to.have.status(200));"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\"valorDiaria\":200.00}"
+            },
+            "url": {
+              "raw": "{{base_url}}/veiculos/{{veiculo_id}}",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "veiculos",
+                "{{veiculo_id}}"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Excluir veículo (Admin)",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test('Status 200 ou 204', () => pm.expect(pm.response.code).to.be.oneOf([200,204]));"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/veiculos/{{veiculo_id}}",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "veiculos",
+                "{{veiculo_id}}"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Locações",
+      "item": [
+        {
+          "name": "Criar locação",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test('Status 200 ou 201', () => pm.expect(pm.response.code).to.be.oneOf([200,201]));",
+                  "const l = pm.response.json();",
+                  "pm.collectionVariables.set('locacao_id', l.id);",
+                  "pm.test('Status ATIVA', () => pm.expect(l.status).to.equal('ATIVA'));"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\"usuarioId\":{{usuario_id}},\"veiculoId\":{{veiculo_id}},\"dataRetirada\":\"2026-10-10T12:00:00\",\"dataDevolucaoPrevista\":\"2026-10-15T12:00:00\"}"
+            },
+            "url": {
+              "raw": "{{base_url}}/locacoes",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "locacoes"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Listar por usuário",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test('Status 200', () => pm.response.to.have.status(200));"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/locacoes/usuario/{{usuario_id}}",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "locacoes",
+                "usuario",
+                "{{usuario_id}}"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Finalizar locação",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test('Status 200', () => pm.response.to.have.status(200));",
+                  "pm.test('Status AGUARDANDO_PAGAMENTO', () => pm.expect(pm.response.json().status).to.equal('AGUARDANDO_PAGAMENTO'));"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\"dataDevolucaoReal\":\"2026-10-15T12:00:00\"}"
+            },
+            "url": {
+              "raw": "{{base_url}}/locacoes/{{locacao_id}}/finalizar",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "locacoes",
+                "{{locacao_id}}",
+                "finalizar"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Cancelar locação",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test('Status 200', () => pm.response.to.have.status(200));",
+                  "pm.test('Status CANCELADA', () => pm.expect(pm.response.json().status).to.equal('CANCELADA'));"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "PUT",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/locacoes/{{locacao_id}}/cancelar",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "locacoes",
+                "{{locacao_id}}",
+                "cancelar"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Pagamentos",
+      "item": [
+        {
+          "name": "Processar pagamento",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test('Status 200', () => pm.response.to.have.status(200));",
+                  "pm.test('Pagamento salvo', () => pm.expect(pm.response.json()).to.have.property('id'));"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\"formaPagamento\":\"PIX\"}"
+            },
+            "url": {
+              "raw": "{{base_url}}/pagamentos/processar/{{locacao_id}}",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "pagamentos",
+                "processar",
+                "{{locacao_id}}"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Usuários (Admin)",
+      "item": [
+        {
+          "name": "Listar todos",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test('Status 200', () => pm.response.to.have.status(200));",
+                  "pm.test('Array de usuarios', () => pm.expect(pm.response.json()).to.be.an('array'));"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/usuarios",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "usuarios"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Atualizar usuário",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test('Status 200', () => pm.response.to.have.status(200));"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\"nome\":\"Nome Atualizado\",\"telefone\":\"61988887777\"}"
+            },
+            "url": {
+              "raw": "{{base_url}}/usuarios/{{usuario_id}}",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "usuarios",
+                "{{usuario_id}}"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    }
+  ],
+  "variable": [
+    {
+      "key": "base_url",
+      "value": "http://localhost:8081"
+    },
+    {
+      "key": "usuario_id",
+      "value": "1"
+    },
+    {
+      "key": "locacao_id",
+      "value": "1"
+    },
+    {
+      "key": "veiculo_id",
+      "value": "1"
+    }
+  ]
+}
