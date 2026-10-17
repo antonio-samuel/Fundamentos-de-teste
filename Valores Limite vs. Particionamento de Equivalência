@@ -1,0 +1,85 @@
+teste de Software - Análise de Valores Limite vs. Particionamento de Equivalência
+
+O teste de software é um processo de encontrar erros e verificar se o software desenvolvido atende aos requisitos do usuário final. Para realizar os testes, os testadores escrevem casos de teste (procedimentos passo a passo de como testar) que recebem valores de dados de teste como entrada para verificar o comportamento de um software. Em alguns casos, existe um conjunto de valores de entrada a serem testados, e escrever casos de teste para todos esses valores torna-se trabalhoso e propenso a erros. Para contornar essa situação, são utilizadas técnicas de projeto de casos de teste.  
+
+Este artigo aborda a diferença entre duas técnicas: Análise de Valores Limite e Particionamento de Equivalência. Os seguintes tópicos serão discutidos:
+
+O que é Análise de Valores Limite (AVL)?
+O que é Particionamento de Equivalência?
+BVA vs. Particionamento por Equivalência
+Vamos começar a discutir cada um deles em detalhes.
+
+O que é Análise de Valores Limite (AVL)?
+A Análise de Valores Limite (BVA, na sigla em inglês) é usada para verificar o comportamento de uma aplicação utilizando dados de teste que existem nos valores limite ou, em outras palavras, para um intervalo de valores de entrada, os valores limite (valores extremos) são usados ​​como entrada para teste. É uma técnica de projeto bastante utilizada, pois acredita-se que o software tem maior probabilidade de falhar nos limites superior e inferior dos valores de entrada.
+
+Exemplo: Um software permite que pessoas com idades entre 20 e 50 anos (incluindo 20 e 50) preencham um formulário, no qual o usuário deve inserir sua idade no campo apropriado.
+
+Os valores limite são 20 (valor mínimo) e 50 (valor máximo).
+
+                       Valor inválido
+
+                          (min-1)
+                            19
+                        Valor válido
+
+     (mínimo, mín+1, valor nominal, máximo-1, máximo)
+                    20, 21, 30, 49, 50	
+  
+                        Valor inválido
+
+                        (máx. + 1)
+
+                           51
+Na tabela acima, é possível identificar claramente todos os valores de teste válidos e inválidos (valores considerados durante o teste do sistema). 
+
+Valor válido: Valores de teste nos quais o sistema não apresenta falhas e funciona corretamente conforme a necessidade do usuário.
+Valores inválidos: valores de teste que não atendem aos requisitos do sistema.
+O que é Particionamento de Equivalência (EP)?
+Também é chamado de Particionamento de Classes de Equivalência (ECP) . É uma técnica de teste de caixa preta , onde um intervalo de valores de entrada é dividido em classes de dados equivalentes. Nesse método, o testador testa um valor de entrada aleatório dentro do intervalo definido de classes de dados equivalentes e, se a saída para esse valor de entrada for válida, todo o intervalo de classes é considerado válido e vice-versa.
+
+Exemplo : Um aplicativo permite que o usuário insira uma senha com 8 a 12 dígitos (mínimo de 8 e máximo de 12 dígitos).
+
+Classe de equivalência inválida	          Classe de Equivalência Válida         	Classe de equivalência inválida
+        <8	                                           8-12	                                     >12
+Vamos considerar alguns valores de senha para classes válidas e inválidas.
+
+1234 tem comprimento 4, o que é uma senha inválida, pois 4 < 8.
+567890234 tem comprimento 9, que é uma senha válida, pois 9 está entre 8 e 12.
+4536278654329 tem 13 caracteres, o que é uma senha inválida, pois 13 > 12.  
+Análise de Valores Limite vs. Particionamento de Equivalência
+A Análise de Valores Limite (BVA, na sigla em inglês) concentra-se em testar nos limites entre as partições, enquanto o Particionamento por Equivalência (EP, na sigla em inglês) divide os dados de entrada em classes equivalentes para reduzir os casos de teste. Ambos os métodos visam minimizar o esforço de teste e maximizar a cobertura.
+
+A seguir, apresentamos algumas das diferenças entre BVA e Particionamento por Equivalência.
+
+ 	                      Análise de Valor Limite	                                       Particionamento de Equivalência
+Usos
+
+A BVA considera os valores dos dados de entrada dentro dos limites definidos.
+
+O Particionamento por Equivalência examina os valores dos dados de entrada dentro do intervalo das classes de equivalência. 
+Testando Valores
+
+Considera os valores min+1, min, min-1, nominal, max+1, max e max-1 como valores de dados de teste de entrada.
+
+Na partição de equivalência, os intervalos válidos e inválidos das classes de equivalência são utilizados para testar as aplicações desenvolvidas.
+
+Identificação de erros       
+
+Ele identifica erros apenas em valores limite.
+
+Isso ajuda a identificar erros entre as classes de dados de equivalência particionadas.
+
+Áreas de aplicação
+
+Faz parte do processo de estresse e dos testes negativos.
+
+Pode ser realizado em qualquer etapa do teste de software, como o teste de unidade.
+
+Condições de Uso
+
+É restrito a aplicações com valores limite próximos.
+
+A correção do particionamento de equivalência depende da precisão com que o testador identifica a classe de equivalência.
+
+No entanto, tanto a Análise de Valores Limite quanto o Particionamento de Equivalência são usados ​​em conjunto, pois um ajuda a encontrar erros nos limites e o outro ajuda a determinar erros que existem dentro do intervalo definido de valores de dados de entrada.
+
