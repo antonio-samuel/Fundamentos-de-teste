@@ -1,6 +1,6 @@
 Fundamentos de teste
 
-cadeia de eventos par uma falha:
+cadeia de eventos pra uma falha:
 passo 1 :erro---> passo 2 :defeito ----> passo 3: falha
 (falha humana)     (falha no código)    (comportamento que não deveria acontecer)
 
