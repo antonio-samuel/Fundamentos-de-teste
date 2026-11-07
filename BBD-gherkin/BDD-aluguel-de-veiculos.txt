@@ -1,0 +1,25 @@
+# language: pt
+Funcionalidade: Aluguel de Veículos
+  Como um cliente da locadora
+  Quero alugar um carro disponível
+  Para poder me locomover
+
+  Cenário: 1. Aluguel de carro com sucesso (Fluxo Principal)
+    Dado que eu estou logado no sistema como usuário comum
+    E o carro de placa "ABC-1234" está disponível para locação
+    Quando eu seleciono o carro e confirmo o aluguel por 3 dias
+    Então o sistema deve gerar um contrato de aluguel com status "Ativo"
+    E o carro de placa "ABC-1234" não deve mais aparecer na lista de disponíveis
+
+  Cenário: 2. Tentativa de alugar carro já alugado (Fluxo de Exceção)
+    Dado que eu estou logado no sistema
+    E o carro de placa "ABC-1234" já foi alugado por outro cliente
+    Quando eu tento selecionar e alugar o carro de placa "ABC-1234"
+    Então o sistema deve exibir a mensagem de erro "Veículo indisponível para esta data"
+    E o aluguel não deve ser finalizado
+
+  Cenário: 3. Devolução antecipada (Fluxo Alternativo)
+    Dado que eu tenho um aluguel ativo do carro "ABC-1234" para 5 dias
+    Quando eu decido devolver o carro no 3º dia de aluguel
+    Então o sistema deve calcular o valor apenas pelos 3 dias utilizados
+    E o status do contrato deve mudar para "Devolvido"
